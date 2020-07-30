@@ -1,6 +1,8 @@
 body{
     
     background-color:black;
+    font-size:1.2rem;
+    color:#666666;
     font-family: 'Source Sans Pro', sans-serif;
     
 }
@@ -29,11 +31,11 @@ body{
 }
 
 .screen{
-    background-color:#555555;
+    background-color:#666666;
     border-radius:20px;
     width:700px;
     height:500px;
-    transform:translateX(30%) translateY(15%) rotateY(24deg) rotateX(10deg);
+    transform:translateX(200px) translateY(120px) rotateY(24deg) rotateX(10deg);
     transition:0.8s;
     position: absolute;
     Z-index:2;
@@ -43,8 +45,13 @@ body{
     position: absolute;
     top:0;
     left:0;
-    height:100%;
-    width:100%;
+    right:0;
+    bottom:0;
+    height:auto;
+    width:auto;
+    max-height:100%;
+    max-width:100%;
+    margin:auto;
     Z-index:-1;
 }
 
@@ -53,7 +60,9 @@ body{
     width: 90%;
     height: 84%;
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
 
     position:absolute;
     top: 0;
@@ -62,18 +71,12 @@ body{
     right:0;
     margin: auto;
     Z-index:2;
-    
 }
 
 
 .screen_body h1{
     padding: 200px 0;
     
-}
-
-
-.objects{
-
 }
 
 
@@ -85,7 +88,7 @@ body{
     right:0px;
     bottom:0px;
     z-index:1000;
-    background: repeating-linear-gradient(0deg, #111 0px, #111 1px, transparent 2px, transparent 5px);
+    background: repeating-linear-gradient(0deg, #11111120 0px, #11111120 1px, transparent 2px, transparent 5px);
     background-size:100% 5px;
     animation: lines 2s ease-out infinite;
     opacity:0.3;
@@ -93,7 +96,7 @@ body{
     pointer-events: none;
 }
 .text {
-    color:#666666;
+    color:#888888;
     position: absolute;
     top:50%;
     left:50%;
@@ -103,13 +106,37 @@ body{
 }
 
 #to_gallery{
-    border:medium solid #999999; 
-    height:200px; 
-    width:500px;
-    position:absolute; 
-    z-index: inherit;
+    border:1px solid #999999; 
+    height:300px; 
+    width:200px;
+    margin:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
+
+#to_gallery:hover{
+    background: repeating-linear-gradient(0deg, #88888850 0px, #88888850 1px, transparent 2px, transparent 5px);
+    animation: lines 2s ease-out infinite;
+}
+
+#to_about{
+    border:1px solid #999999; 
+    height:300px; 
+    width:200px;
+    margin:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
 }
  
+#to_about:hover{
+    background: repeating-linear-gradient(0deg, #88888850 0px, #88888850 1px, transparent 2px, transparent 5px);
+    animation: lines 2s ease-out infinite;
+}
+
 @keyframes lines{
     0% {
        background-position:0px 0px;
@@ -118,5 +145,3 @@ body{
        background-position:0px 25px;
     }
  }
-
-
