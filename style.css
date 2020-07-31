@@ -179,3 +179,64 @@ pointer-events: none;
     }
  }
 
+
+
+
+#main_canvas{
+    background-color:#000000aa;
+    height:100%;
+    width:100%;
+    position: absolute;
+    top:0;
+    right:0;
+    margin:auto;
+    Z-index:50;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+#canvas{
+    height:100%;
+    width:50%;
+    top:0;
+    right:0;
+    position:absolute;
+}
+
+#menuback{
+    
+    height:100px;
+    width:100px;
+    position: absolute;
+    Z-index:51;
+    top:0;
+    left:0;
+    
+}
+
+#menuback>img:hover{
+    animation: apeal 0.5s linear normal;
+}
+
+@keyframes apeal{
+    0% {
+        transform:scaleX(1) scaleY(1);
+    }
+    50%{
+        transform:scaleX(1.2) scaleY(1.2);
+    }
+    100%{
+        transform:scaleX(1) scaleY(1);
+    }
+}
+
+#detail{
+    color:#cccccc;
+    position: absolute;
+    top:0;
+    right:100px;
+}
+
+#detail img{
+    padding: 50px;
+}

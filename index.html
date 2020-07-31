@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="gallerystyle.css">
     <script src="script.js" defer></script>
     <script src="module/jquery-3.4.1.min.js"></script>
+    <script src="module/threejs/three.min.js"></script>
+    <script src="module/threejs/GLTFLoader.js"></script>
+    <script src="module/threejs/OrbitControls.js"></script>
 
     <title>Welcome</title>
 </head>
@@ -20,7 +23,7 @@
                 <div id="filter"></div>
                 <div class="screen_body" id="scbody">
                     <div class="text" id="sctext">
-                        Welcome <br>To <br>My Gellery
+                       <h3> Welcome <br>To <br>My Gellery</h3>
                      </div>
                 </div>
             </div>
@@ -33,7 +36,13 @@
             </div>
             
             <div id="gallery">
+            </div>
 
+            <div id="main_canvas">
+                <div id="menuback"><img src="img/back.png"></div>
+                <div id="detail"></div>
+                <canvas id="canvas">
+                </canvas>
             </div>
         </div>
     </div>

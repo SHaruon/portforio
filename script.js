@@ -3,11 +3,92 @@ document.addEventListener('mousemove', function (e) {
     menu[0].style.transform = 'rotateY(' +(24+ (e.clientX/100)) + 'deg) rotateX(' +(10- (e.clientY/100)) + 'deg)';
 });*/
 
+
+
+/*3d処理　3dの部分 */
+
+
+
+
+
+window.addEventListener('DOMContentLoaded', init);
+
+function init() {
+
+    // レンダラーを作成
+    const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('#canvas'),alpha:true
+    });
+
+    
+    // ウィンドウサイズ設定
+    width = document.getElementById('main_canvas').getBoundingClientRect().width;
+    height = document.getElementById('main_canvas').getBoundingClientRect().height;
+    renderer.setPixelRatio(1);
+    renderer.setSize(width, height);
+    console.log(window.devicePixelRatio);
+    console.log(width + ", " + height);
+
+    // カメラを作成
+    camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+    camera.position.set(0, 400, -1000);
+
+    //const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    // Load GLTF or GLB
+    const loader = new THREE.GLTFLoader();
+    const url1 = "obj/guitar.glb";
+    const url2 = "obj/chair.glb";
+    const url3 = "obj/tank.glb";
+    const url4 = "obj/chara.glb";
+    const url5 = "obj/rakiga.glb";
+
+    let model = null;
+    //シーンを作成
+    let scene = new THREE.Scene();
+
+    function loadGLTF(url){
+         // シーンを作成
+         scene = new THREE.Scene();
+        loader.load(
+            url,
+            function (gltf) {
+                model = gltf.scene;
+                // model.name = "model_with_cloth";
+                model.scale.set(100.0, 100.0, 100.0);
+                model.position.set(0, 0, 0);
+                scene.add(gltf.scene);
+    
+                // model["test"] = 100;
+                
+            },
+            function (error) {
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+        renderer.gammaOutput = true;
+        renderer.gammaFactor = 2.2;
+    
+    
+        // 平行光源
+        const light = new THREE.DirectionalLight(0xFFFFFF);
+        light.intensity = 1; // 光の強さを倍に
+        light.position.set(0, 1, 0);
+        const light2 = new THREE.AmbientLight(0xffffff,0.1);
+        // シーンに追加
+        scene.add(light);
+        scene.add(light2);
+    }
+    
+
+    /*!!!!メインウィンドウ部分ここから */
 let sc = document.getElementById("sc");
 let scbody = document.getElementById("scbody");
 let sc_width = window.getComputedStyle(sc, null).getPropertyValue('width');
 let table = document.getElementById("table");
 let gallery = document.getElementById("gallery");
+let menu = document.getElementById("menu");
 
 let scene_flag = 0;
 
@@ -23,7 +104,8 @@ scback.addEventListener('click', function(){
     }
         scbody.innerHTML = `
     <div class="text" id="sctext">
-           Touch The Screen
+    <h3>Welcome</h3>
+    Touch The Screen
     </div>`;
 
     sc.style=`
@@ -73,7 +155,7 @@ scbody.addEventListener('click', function(){
     `;
     
     gallery.innerHTML='';
-    scbody.innerHTML = `<div id="to_gallery">Arts<br>\>\></div> <div id="to_about">About<br>\>\></div>`;
+    scbody.innerHTML = `<div id="to_gallery"><h3>Arts</h3><br>\>\></div> <div id="to_about"><h3>About</h3><br>\>\></div>`;
     scene_flag = 1;
     let togallery = document.getElementById("to_gallery");
     let toabout = document.getElementById("to_about");
@@ -142,11 +224,143 @@ scbody.addEventListener('click', function(){
             });
             
 
+
+            document.getElementById("art_a").addEventListener('click',function(){
+                document.getElementById("detail").innerHTML=`
+                <h1>GUITAR</h1><br>
+                
+                <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自由制作。制作時間5時間<br><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                使用ソフト:&nbspMAYA</h4>
+                `;
+                loadGLTF(url1);
+                openThree();
+            });
+
+            document.getElementById("art_b").addEventListener('click',function(){
+                document.getElementById("detail").innerHTML=`
+                <h1>MAYA&nbspCLUB</h1><br>
+                
+                <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3DCGサークルの紹介動画。<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                サークル内を再現した。制作期間3ヶ月<br><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                使用ソフト:&nbspMAYA,imovie,<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                Adobe After Effects CC 2018</h4>
+                <img src = "img/contents/2_1.png">
+                `;
+                loadGLTF(url2);
+                openThree();
+            });
+
+            document.getElementById("art_c").addEventListener('click',function(){
+                document.getElementById("detail").innerHTML=`
+                <h1>Tiger&nbspTANK</h1><br>
+                
+                <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                戦車。<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                制作期間2日<br><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                使用ソフト:&nbspBlender<br></h4>
+                `;
+                loadGLTF(url3);
+                openThree();
+            });
+
+            document.getElementById("art_d").addEventListener('click',function(){
+                document.getElementById("detail").innerHTML=`
+                <h1>AIT&nbspCharacter</h1><br>
+                
+                <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                大学のマスコットキャラクターの提案。<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                大学に様々な学科がある中、<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                食堂のカレーラーメンをモチーフに<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                工業大学のイメージを統一した。<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                制作期間1日<br><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                使用ソフト:&nbspAdobe Illustrator,Blender<br></h4>
+                `;
+                loadGLTF(url4);
+                openThree();
+            });
+
+            document.getElementById("art_e").addEventListener('click',function(){
+                document.getElementById("detail").innerHTML=`
+                <h1>Imaginary&nbspWeapon</h1><br>
+                
+                <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                自由制作。<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                ゲームの武器を参考にした。<br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                制作期間2日<br><br>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                使用ソフト:&nbspAdobe MAYA<br></h4>
+                `;
+                loadGLTF(url5);
+                openThree();
+            });
+
+            function openThree(){
+                 
+                document.getElementById('main_canvas').style=`
+                pointer-events:auto;
+                visibility: visible;
+                `;
+                document.getElementById('main_canvas').animate({opacity: [0,1]},1000);
+
+                document.getElementById('menuback').addEventListener('click',function(){
+                    
+                    document.getElementById('main_canvas').animate({opacity: [1,0]},200)
+                    document.getElementById('main_canvas').style=`
+                    pointer-events:none;
+                    visibility: hidden;
+                    transition:0.2s;
+                    `;
+                    
+                });
+            }
+           
+
             /*シーンフラグ */
             scene_flag = 2;
         });
 
         toabout.addEventListener('click', function(){
+            scbody.innerHTML = `
+            <p>
+            
+            <b>NAME</b><br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            sharuon<br><br>
+            
+            <b>SYNOPSIS</b><br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            愛知県生まれ温室育ち<br><br>
+            
+            <b>DESCRIPTION</b>    <br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            CGを勉強する大学生。<br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            MAYA&nbsp&nbsp&nbspプラグインの作成など可能です<br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            Blender&nbsp&nbsp&nbsp主にキャラクタモデリングをします<br><br>
+            <b>BUGS</b>    <br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            グミを爆速で消費します<br><br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            Jul 7 ,2020<br>
+            </p>
+            `;
+            scbody.style=`
+
+            `;
             scene_flag = 3;
         });
     }
@@ -160,4 +374,49 @@ document.addEventListener('mousemove',function (e) {
     filter.style = "background: radial-gradient(circle at " + e.clientX + "px " + e.clientY + "px " + ",#ffffff10 , #00000099 )";
 });
 
+/*!!!!メインウィンドウ部分ここまで */
 
+/*以下、3d描画処理 */
+
+
+tick();
+    
+
+let click_flag=0;
+let x=0;
+let y=0;
+
+    function tick() {
+        //controls.update();
+        if (model != null){
+
+            
+             document.onmousedown = function(){
+                 click_flag = 1;
+            };
+             document.onmouseup = function(e){
+                 click_flag = 0;
+            };
+            document.addEventListener('mousemove',function(e){
+                
+                if(click_flag == 1 ){
+                    x = e.movementX/200;
+                    y = e.movementY/200;
+                    
+                }
+                
+           });
+           
+           model.rotation.y += x;
+           model.rotation.x -= y;
+           x = x/1.1;
+            y = y/1.1;
+        }
+
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+    }
+
+
+}
