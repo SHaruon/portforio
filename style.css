@@ -154,10 +154,11 @@ body{
 #table{
 width:2200px;
 height:630px;
-background:radial-gradient(circle at 35% 50%,#333333,#111111);
+background:radial-gradient(circle at 35% 50%,#FFFFFF30,#FFFFFF10);
 transform:translateX(-150px) translateY(410px) rotateY(24deg) rotateX(90deg);
 transition:0.8s;
 overflow:hidden;
+pointer-events: none;
 }
 
 #table_ambient{
@@ -165,6 +166,7 @@ overflow:hidden;
     width:35%;
     height:50%;
     transform: translateX(400px) translateY(0px);
+    pointer-events: none;
 }
 
 

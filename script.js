@@ -49,6 +49,7 @@ scback.addEventListener('click', function(){
         transform:translateX(-150px) translateY(600px) rotateY(24deg) rotateX(90deg);
         transition:0.8s;
     `;
+
     gallery.animate({opacity: [1,0]},1000);
     scene_flag=0;
     
@@ -111,33 +112,33 @@ scbody.addEventListener('click', function(){
             `;
             /*ギャラリーに作品のサムネを表示 */
             gallery.innerHTML = `
-            <div id="art_a"></div>
-            <div id="art_b"></div>
-            <div id="art_c"></div>
-            <div id="art_d"></div>
-            <div id="art_e"></div>
+            <div id="art_a"><img src="img/contents/1.jpg"></div>
+            <div id="art_b"><img src="img/contents/2.png"></div>
+            <div id="art_c"><img src="img/contents/3.png"></div>
+            <div id="art_d"><img src="img/contents/4.png"></div>
+            <div id="art_e"><img src="img/contents/5.jpg"></div>
             `;
             gallery.animate({opacity: [0,1]},2000);
 
             /*サムネの上にマウスを載せると詳細を表示 */
             document.getElementById("art_a").addEventListener('mouseover',function(){
-                scbody.innerHTML='The Moment';
+                scbody.innerHTML='Guitar';
             });
 
             document.getElementById("art_b").addEventListener('mouseover',function(){
-                scbody.innerHTML='hi';
+                scbody.innerHTML='DancingMovie';
             });
 
             document.getElementById("art_c").addEventListener('mouseover',function(){
-                scbody.innerHTML='here';
+                scbody.innerHTML='TANK';
             });
 
             document.getElementById("art_d").addEventListener('mouseover',function(){
-                scbody.innerHTML='No more!';
+                scbody.innerHTML='character AIT';
             });
 
             document.getElementById("art_e").addEventListener('mouseover',function(){
-                scbody.innerHTML='No more!';
+                scbody.innerHTML='Imaginary Weapon';
             });
             
 
