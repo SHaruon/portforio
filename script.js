@@ -9,7 +9,7 @@ document.addEventListener('mousemove', function (e) {
 
 
 
-
+let detail_message='';
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -37,19 +37,21 @@ function init() {
 
     // Load GLTF or GLB
     const loader = new THREE.GLTFLoader();
-    const url1 = "obj/guitar.glb";
-    const url2 = "obj/chair.glb";
-    const url3 = "obj/tank.glb";
-    const url4 = "obj/chara.glb";
-    const url5 = "obj/rakiga.glb";
+    const url1 = "https://sharuon.github.io/portforio/obj/guitar.glb";
+    const url2 = "https://sharuon.github.io/portforio/obj/chair.glb";
+    const url3 = "https://sharuon.github.io/portforio/obj/tank.glb";
+    const url4 = "https://sharuon.github.io/portforio/obj/chara.glb";
+    const url5 = "https://sharuon.github.io/portforio/obj/rakiga.glb";
 
     let model = null;
+    
     //シーンを作成
     let scene = new THREE.Scene();
 
     function loadGLTF(url){
          // シーンを作成
          scene = new THREE.Scene();
+         
         loader.load(
             url,
             function (gltf) {
@@ -60,16 +62,16 @@ function init() {
                 scene.add(gltf.scene);
     
                 // model["test"] = 100;
-                
+                document.getElementById("detail").innerHTML=detail_message;
             },
             function (error) {
                 console.log('An error happened');
                 console.log(error);
             }
         );
-        renderer.gammaOutput = true;
-        renderer.gammaFactor = 2.2;
-    
+        //renderer.gammaOutput = true;
+        //renderer.gammaFactor = 2.2;
+        renderer.outputEncoding = THREE.sRGBEncoding;
     
         // 平行光源
         const light = new THREE.DirectionalLight(0xFFFFFF);
@@ -229,7 +231,7 @@ scbody.addEventListener('click', function(){
 
 
             document.getElementById("art_a").addEventListener('click',function(){
-                document.getElementById("detail").innerHTML=`
+                detail_message=`
                 <h1>GUITAR</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自由制作。制作時間5時間<br><br>
@@ -241,7 +243,7 @@ scbody.addEventListener('click', function(){
             });
 
             document.getElementById("art_b").addEventListener('click',function(){
-                document.getElementById("detail").innerHTML=`
+                detail_message=`
                 <h1>MAYA&nbspCLUB</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3DCGサークルの紹介動画。<br>
@@ -258,7 +260,7 @@ scbody.addEventListener('click', function(){
             });
 
             document.getElementById("art_c").addEventListener('click',function(){
-                document.getElementById("detail").innerHTML=`
+                detail_message=`
                 <h1>Tiger&nbspTANK</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -273,7 +275,7 @@ scbody.addEventListener('click', function(){
             });
 
             document.getElementById("art_d").addEventListener('click',function(){
-                document.getElementById("detail").innerHTML=`
+                detail_message=`
                 <h1>AIT&nbspCharacter</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -294,7 +296,7 @@ scbody.addEventListener('click', function(){
             });
 
             document.getElementById("art_e").addEventListener('click',function(){
-                document.getElementById("detail").innerHTML=`
+                detail_message=`
                 <h1>Imaginary&nbspWeapon</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -311,7 +313,7 @@ scbody.addEventListener('click', function(){
             });
 
             function openThree(){
-                 
+                document.getElementById("detail").innerHTML=`Loading...`;
                 document.getElementById('main_canvas').style=`
                 pointer-events:auto;
                 visibility: visible;
