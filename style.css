@@ -238,5 +238,8 @@ pointer-events: none;
 }
 
 #detail img{
-    padding: 50px;
+    position:absolute;
+    object-fit:cover;
+    right:0;
+    margin:auto;
 }
