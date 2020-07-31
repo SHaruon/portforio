@@ -360,7 +360,7 @@ scbody.addEventListener('click', function(){
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             グミを爆速で消費します<br><br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            Jul 7 ,2020<br>
+            Jul 31 ,2020<br>
             </p>
             `;
             scbody.style=`
