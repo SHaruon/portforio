@@ -83,6 +83,7 @@ function init() {
     
 
     /*!!!!メインウィンドウ部分ここから */
+
 let sc = document.getElementById("sc");
 let scbody = document.getElementById("scbody");
 let sc_width = window.getComputedStyle(sc, null).getPropertyValue('width');
@@ -92,6 +93,8 @@ let menu = document.getElementById("menu");
 
 let scene_flag = 0;
 
+//開始部分
+document.getElementsByClassName("space")[0].animate({opacity: [0,1]},3000);
 
 /*スクリーン以外をクリックすると戻る*/
 let scback = document.getElementById("screenback");
