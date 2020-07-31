@@ -52,7 +52,22 @@ body{
     max-height:100%;
     max-width:100%;
     margin:auto;
-    Z-index:-1;
+    Z-index:0;
+}
+
+#screenback:hover{
+    background-image:url("img/back.png");
+    background-repeat: no-repeat;
+    animation: back  0.8s linear infinite;
+}
+
+@keyframes back{
+    0%{
+        background-position: -50px -50px;
+    }
+    100%{
+        background-position: -80px -50px;
+    }
 }
 
 .screen_body{
@@ -106,7 +121,6 @@ body{
 }
 
 #to_gallery{
-    border:1px solid #999999; 
     height:300px; 
     width:200px;
     margin:30px;
@@ -122,7 +136,6 @@ body{
 }
 
 #to_about{
-    border:1px solid #999999; 
     height:300px; 
     width:200px;
     margin:30px;
@@ -137,6 +150,24 @@ body{
     animation: lines 2s ease-out infinite;
 }
 
+
+#table{
+width:2200px;
+height:630px;
+background:radial-gradient(circle at 35% 50%,#333333,#111111);
+transform:translateX(-150px) translateY(410px) rotateY(24deg) rotateX(90deg);
+transition:0.8s;
+overflow:hidden;
+}
+
+#table_ambient{
+    background: linear-gradient(#FFFFFF30, #00000000);
+    width:35%;
+    height:50%;
+    transform: translateX(400px) translateY(0px);
+}
+
+
 @keyframes lines{
     0% {
        background-position:0px 0px;
@@ -145,3 +176,4 @@ body{
        background-position:0px 25px;
     }
  }
+
