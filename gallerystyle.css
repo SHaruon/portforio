@@ -30,7 +30,7 @@ transition:0.7s;
 #art_a{
  
     position: absolute;
-    transform: translateX(300px) translateY(100px) rotateZ(10deg);
+    transform: translateX(300px) translateY(100px) rotateZ(-10deg);
 }
 #art_b{
     position: absolute;
@@ -49,7 +49,7 @@ transition:0.7s;
 
 #art_e{
     position: absolute;
-    transform: translateX(900px) translateY(200px) rotateZ(-10deg);
+    transform: translateX(900px) translateY(200px) rotateZ(10deg);
 }
 
 
