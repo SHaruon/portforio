@@ -237,3 +237,9 @@ pointer-events: none;
     right:100px;
 }
 
+#detail img{
+    position:absolute;
+    object-fit:cover;
+    right:0;
+    margin:auto;
+}
