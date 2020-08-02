@@ -343,7 +343,7 @@ scbody.addEventListener('click', function(){
             
             <b>NAME</b><br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            sharuon<br><br>
+            S_Haruon<br><br>
             
             <b>SYNOPSIS</b><br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
