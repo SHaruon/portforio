@@ -82,7 +82,6 @@ Object.keys(urls).forEach(key => {
                 //最初は真っ暗に"Loading"
                 document.getElementById('loading').innerHTML=`Loading...`;
                 document.getElementById('loading').style=` position:absolute; left:50%; top:50%;`;
-                document.getElementsByClassName("space")[0].style = `opacity: 0; pointer-events:none;`;
             }
         },
         function (error) {
