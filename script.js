@@ -37,52 +37,73 @@ function init() {
 
     // Load GLTF or GLB
     const loader = new THREE.GLTFLoader();
-    const url1 = "https://sharuon.github.io/portforio/obj/guitar.glb";
-    const url2 = "https://sharuon.github.io/portforio/obj/chair.glb";
-    const url3 = "https://sharuon.github.io/portforio/obj/tank.glb";
-    const url4 = "https://sharuon.github.io/portforio/obj/chara.glb";
-    const url5 = "https://sharuon.github.io/portforio/obj/rakiga.glb";
 
-    let model = null;
-    
-    //シーンを作成
-    let scene = new THREE.Scene();
 
-    function loadGLTF(url){
-         // シーンを作成
-         scene = new THREE.Scene();
-         
-        loader.load(
-            url,
-            function (gltf) {
-                model = gltf.scene;
-                // model.name = "model_with_cloth";
-                model.scale.set(100.0, 100.0, 100.0);
-                model.position.set(0, 0, 0);
-                scene.add(gltf.scene);
+    const urls = [
+    'https://sharuon.github.io/portforio/obj/guitar.glb',
+    'https://sharuon.github.io/portforio/obj/chair.glb',
+    'https://sharuon.github.io/portforio/obj/tank.glb',
+    'https://sharuon.github.io/portforio/obj/chara.glb',
+    'https://sharuon.github.io/portforio/obj/rakiga.glb'
+];
+
+let models = [null,null,null,null,null];
+let nowmodel = null;
     
-                // model["test"] = 100;
-                document.getElementById("detail").innerHTML=detail_message;
-            },
-            function (error) {
-                console.log('An error happened');
-                console.log(error);
+//シーンを作成
+let scene = new THREE.Scene();
+var load_flag=0;
+        
+Object.keys(urls).forEach(key => {
+    loader.load(
+        urls[key],
+        function (gltf) {
+            models[key] = gltf.scene;
+            // model.name = "model_with_cloth";
+            models[key].scale.set(100.0, 100.0, 100.0);
+            models[key].position.set(0, 0, 0);
+            scene.add(models[key]);
+            // model["test"] = 100;
+
+            //全部読み込んだら画面を見せる
+            
+            if(models[4] != null){
+                load_flag++;
+                console.log("added here !! "+ load_flag);
             }
-        );
-        //renderer.gammaOutput = true;
-        //renderer.gammaFactor = 2.2;
-        renderer.outputEncoding = THREE.sRGBEncoding;
+            if(load_flag == 1){
+                /*見せる */
+                document.getElementsByClassName("space")[0].style = `opacity: 1`;
+                document.getElementsByClassName("space")[0].animate({opacity: [0,1]},2000);
+                console.log("okkkk"+ load_flag);
+            }else if(load_flag == 0){
+                //最初は真っ暗に"Loading"
+                document.getElementsByClassName("space")[0].style = `opacity: 0;`;
+            }
+        },
+        function (error) {
+            console.log('An error happened');
+            console.log(error);
+        }
+
+    );
     
-        // 平行光源
-        const light = new THREE.DirectionalLight(0xFFFFFF);
-        light.intensity = 1; // 光の強さを倍に
-        light.position.set(0, 1, 0);
-        const light2 = new THREE.AmbientLight(0xffffff,0.1);
-        // シーンに追加
-        scene.add(light);
-        scene.add(light2);
-    }
+
+});
+
+
+//renderer.gammaOutput = true;
+//renderer.gammaFactor = 2.2;
+renderer.outputEncoding = THREE.sRGBEncoding;
     
+   // 平行光源
+const light = new THREE.DirectionalLight(0xFFFFFF);
+light.position.set(0, 1, 0);
+light.intensity = 1; // 光の強さを倍に
+const light2 = new THREE.AmbientLight(0xffffff,0.1);
+   // シーンに追加
+scene.add(light);
+scene.add(light2);
 
     /*!!!!メインウィンドウ部分ここから */
 
@@ -96,7 +117,8 @@ let menu = document.getElementById("menu");
 let scene_flag = 0;
 
 //開始部分
-document.getElementsByClassName("space")[0].animate({opacity: [0,1]},3000);
+
+
 
 /*スクリーン以外をクリックすると戻る*/
 let scback = document.getElementById("screenback");
@@ -231,19 +253,21 @@ scbody.addEventListener('click', function(){
 
 
             document.getElementById("art_a").addEventListener('click',function(){
-                detail_message=`
+                document.getElementById("detail").innerHTML=`
                 <h1>GUITAR</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自由制作。制作時間5時間<br><br>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 使用ソフト:&nbspMAYA</h4>
                 `;
-                loadGLTF(url1);
-                openThree();
+                nowmodel = '0';
+                if(nowmodel == '0'){
+                    openThree();
+                }
             });
 
             document.getElementById("art_b").addEventListener('click',function(){
-                detail_message=`
+                document.getElementById("detail").innerHTML=`
                 <h1>MAYA&nbspCLUB</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3DCGサークルの紹介動画。<br>
@@ -255,12 +279,14 @@ scbody.addEventListener('click', function(){
                 Adobe After Effects CC 2018</h4>
                 <img src = "img/contents/2_1.png">
                 `;
-                loadGLTF(url2);
-                openThree();
+                nowmodel = '1';
+                if(nowmodel == '1'){
+                    openThree();
+                }
             });
 
             document.getElementById("art_c").addEventListener('click',function(){
-                detail_message=`
+                document.getElementById("detail").innerHTML=`
                 <h1>Tiger&nbspTANK</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -270,12 +296,14 @@ scbody.addEventListener('click', function(){
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 使用ソフト:&nbspBlender<br></h4>
                 `;
-                loadGLTF(url3);
-                openThree();
+                nowmodel = '2';
+                if(nowmodel == '2'){
+                    openThree();
+                }
             });
 
             document.getElementById("art_d").addEventListener('click',function(){
-                detail_message=`
+                document.getElementById("detail").innerHTML=`
                 <h1>AIT&nbspCharacter</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -291,12 +319,14 @@ scbody.addEventListener('click', function(){
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 使用ソフト:&nbspAdobe Illustrator,Blender<br></h4>
                 `;
-                loadGLTF(url4);
-                openThree();
+                nowmodel = '3';
+                if(nowmodel == '3'){
+                    openThree();
+                }
             });
 
             document.getElementById("art_e").addEventListener('click',function(){
-                detail_message=`
+                document.getElementById("detail").innerHTMLe=`
                 <h1>Imaginary&nbspWeapon</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -308,12 +338,17 @@ scbody.addEventListener('click', function(){
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 使用ソフト:&nbspAdobe MAYA<br></h4>
                 `;
-                loadGLTF(url5);
-                openThree();
+                nowmodel = '4';
+                if(nowmodel == '4'){
+                    openThree();
+                }
             });
 
             function openThree(){
-                document.getElementById("detail").innerHTML=`Loading...`;
+                /*指定したオブジェクトのみ表示 */
+                models.forEach(m =>{m.visible = false});
+                models[nowmodel].visible = true;
+
                 document.getElementById('main_canvas').style=`
                 pointer-events:auto;
                 visibility: visible;
@@ -328,7 +363,6 @@ scbody.addEventListener('click', function(){
                     visibility: hidden;
                     transition:0.2s;
                     `;
-                    
                 });
             }
            
@@ -393,7 +427,7 @@ let y=0;
 
     function tick() {
         //controls.update();
-        if (model != null){
+        if (models[nowmodel] != null){
 
             
              document.onmousedown = function(){
@@ -412,8 +446,8 @@ let y=0;
                 
            });
            
-           model.rotation.y += x;
-           model.rotation.x -= y;
+           models[nowmodel].rotation.y += x;
+           models[nowmodel].rotation.x -= y;
            x = x/1.1;
             y = y/1.1;
         }
