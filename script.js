@@ -73,12 +73,16 @@ Object.keys(urls).forEach(key => {
             }
             if(load_flag == 1){
                 /*見せる */
-                document.getElementsByClassName("space")[0].style = `opacity: 1`;
+                document.getElementById('loading').innerHTML=``;
+                document.getElementById('loading').style=``;
+                document.getElementsByClassName("space")[0].style = `opacity: 1; pointer-events:auto;`;
                 document.getElementsByClassName("space")[0].animate({opacity: [0,1]},2000);
                 console.log("okkkk"+ load_flag);
             }else if(load_flag == 0){
                 //最初は真っ暗に"Loading"
-                document.getElementsByClassName("space")[0].style = `opacity: 0;`;
+                document.getElementById('loading').innerHTML=`Loading...`;
+                document.getElementById('loading').style=` position:absolute; left:50%; top:50%;`;
+                document.getElementsByClassName("space")[0].style = `opacity: 0; pointer-events:none;`;
             }
         },
         function (error) {
