@@ -329,7 +329,7 @@ scbody.addEventListener('click', function(){
             });
 
             document.getElementById("art_e").addEventListener('click',function(){
-                document.getElementById("detail").innerHTMLe=`
+                document.getElementById("detail").innerHTML=`
                 <h1>Imaginary&nbspWeapon</h1><br>
                 
                 <h4>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
