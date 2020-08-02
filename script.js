@@ -75,13 +75,15 @@ Object.keys(urls).forEach(key => {
                 /*見せる */
                 document.getElementById('loading').innerHTML=``;
                 document.getElementById('loading').style=``;
-                document.getElementsByClassName("space")[0].style = `opacity: 1; pointer-events:auto;`;
+                document.getElementsByClassName("space")[0].style = `
+                opacity: 1; pointer-events:auto; visibility: visible;`;
                 document.getElementsByClassName("space")[0].animate({opacity: [0,1]},2000);
                 console.log("okkkk"+ load_flag);
             }else if(load_flag == 0){
                 //最初は真っ暗に"Loading"
                 document.getElementById('loading').innerHTML=`Loading...`;
-                document.getElementById('loading').style=` position:absolute; left:45%; top:45%;`;
+                document.getElementById('loading').style=`
+                 position:absolute; left:45%; top:45%;`;
             }
         },
         function (error) {

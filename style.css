@@ -24,6 +24,7 @@ body{
     height:100%;
     position: absolute;
     opacity:0;
+    visibility: hidden;
 }
 
 .menu{
