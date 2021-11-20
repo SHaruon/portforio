@@ -70,6 +70,11 @@ function init(){
     canvas.addEventListener('mouseup',onMouseUp);
     canvas.addEventListener('mouseout',onMouseOut);
 
+    //スマホ対応
+    canvas.addEventListener('touchmove',onMouseMove);
+    canvas.addEventListener('touchstart',onMouseDown);
+    canvas.addEventListener('touchend',onMouseUp);
+
     timer = setInterval(draw,interval * 1000);
     gameTimer = setTimeout(gameOver,gameTime * 1000);
 
@@ -372,6 +377,11 @@ function gameOver(){
     canvas.removeEventListener("mousedown",onMouseDown);
     canvas.removeEventListener("mouseup",onMouseUp);
     canvas.removeEventListener("mouseout",onMouseOut);
+
+        //スマホ対応
+    canvas.removeEventListener('touchmove',onMouseMove);
+    canvas.removeEventListener('touchstart',onMouseDown);
+    canvas.removeEventListener('touchend',onMouseUp);
     
 }
 
