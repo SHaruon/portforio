@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(245,243,236);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(200,100,0,0.3);
+}
+
+#game{
+    padding:50px;
+}
+
+#canvas {
+    border:2px dotted rgb(240,200,200);
+}
+
+#author{
+    text-align: center;
+}
+
+#game_title{
+    text-align: center;
+}
+
+#box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#info{
+    position:absolute;
+    user-select: none;
+    outline: none;
+}
