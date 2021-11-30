@@ -56,8 +56,10 @@ var load_flag=0;
         
 Object.keys(urls).forEach(key => {
     loader.load(
+        
         urls[key],
         function (gltf) {
+            scene.add( camera );
             models[key] = gltf.scene;
             // model.name = "model_with_cloth";
             models[key].scale.set(100.0, 100.0, 100.0);
@@ -382,7 +384,7 @@ scbody.addEventListener('click', function(){
             
             <b>NAME</b><br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            S_Haruon<br><br>
+            Saito_Haruki<br><br>
             
             <b>SYNOPSIS</b><br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

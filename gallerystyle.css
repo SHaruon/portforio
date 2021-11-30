@@ -1,3 +1,16 @@
+body{
+    top:0;
+    left:0;
+    bottom:0;
+    right: 0;
+    position:fixed;
+}
+
+.space *{
+    perspective: 1000px;
+    
+}
+
 
 #gallery{
 height:630px;
@@ -5,6 +18,8 @@ overflow: hidden;
 width: 3300px;
 transform: translateX(-300px) translateY(590px) rotateY(0deg) rotateX(90deg);
 transition: 1.5s;
+transform-style: preserve-3d;
+
 }
 
 #gallery img{
